@@ -1,0 +1,84 @@
+plugins {
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(25)
+    }
+}
+
+application {
+    mainClass = 'org.Vladsanin777.cleanCode.Ex1.Ex1'
+}
+
+tasks.register('runEx1', JavaExec) {
+    group = 'application'
+    description = 'Launch application Ex1'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'org.Vladsanin777.cleanCode.Ex1.Ex1'
+}
+
+tasks.register('runEx2', JavaExec) {
+    group = 'application'
+    description = 'Launch application Ex2'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'org.Vladsanin777.cleanCode.Ex2.Ex2'
+}
+
+tasks.register('runEx3', JavaExec) {
+    group = 'application'
+    description = 'Launch application Ex3'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'org.Vladsanin777.cleanCode.Ex3.Ex3'
+}
+
+tasks.register('buildEx1', Jar) {
+    group = 'build'
+    description = 'Build executing JAR for Ex1'
+    
+    from sourceSets.main.output
+    
+    archiveBaseName = 'Ex1App'
+    archiveVersion = '1.0.0'
+    
+    manifest {
+        attributes(
+            'Main-Class': 'org.Vladsanin777.cleanCode.Ex1.Ex1'
+        )
+    }
+}
+
+tasks.register('buildEx2', Jar) {
+    group = 'build'
+    description = 'Build executing JAR for Ex2'
+    
+    from sourceSets.main.output
+    archiveBaseName = 'Ex2App'
+    archiveVersion = '1.0.0'
+    
+    manifest {
+        attributes(
+            'Main-Class': 'org.Vladsanin777.cleanCode.Ex2.Ex2'
+        )
+    }
+}
+
+tasks.register('buildEx3', Jar) {
+    group = 'build'
+    description = 'Build executing JAR for Ex3'
+    
+    from sourceSets.main.output
+    archiveBaseName = 'Ex3App'
+    archiveVersion = '1.0.0'
+    
+    manifest {
+        attributes(
+            'Main-Class': 'org.Vladsanin777.cleanCode.Ex3.Ex3'
+        )
+    }
+}
